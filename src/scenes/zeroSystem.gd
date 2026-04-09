@@ -128,7 +128,7 @@ func extractBin() -> void:
 				
 				if buff.slice(0, 3).get_string_from_ascii() == "LZS":
 					f_size = buff.decode_u32(4)
-					buff = ComFuncs.decompLZSS(buff.slice(8), buff.size() - 8, f_size)
+					buff = ComFuncs.decompLZSS(buff.slice(8), buff.size() - 8, f_size, 0xFEE, 0x20)
 					
 				if type == 0x0A:
 					f_name = "MOV%05d.PSS" % id
@@ -338,7 +338,7 @@ func extractBin() -> void:
 					
 					if buff.slice(0, 3).get_string_from_ascii() == "LZS":
 						f_size = buff.decode_u32(4)
-						buff = ComFuncs.decompLZSS(buff.slice(8), buff.size() - 8, f_size)
+						buff = ComFuncs.decompLZSS(buff.slice(8), buff.size() - 8, f_size, 0xFEE, 0x20)
 						
 					if buff.slice(0, 4).get_string_from_ascii() == "TIM2":
 						var pngs: Array[Image] = ComFuncs.load_tim2_images(buff, false, true)

@@ -1040,7 +1040,7 @@ func combine_greyscale_data_horizontally_arr(images_data: PackedByteArray, width
 	return combined_data
 
 	
-func decompLZSS(buffer: PackedByteArray, zsize: int, size: int, dic_off: int = 0xFEE) -> PackedByteArray:
+func decompLZSS(buffer: PackedByteArray, zsize: int, size: int, dic_off: int = 0xFEE, fill_value: int = 0) -> PackedByteArray:
 	var dec: PackedByteArray
 	var dict: PackedByteArray
 	var in_off: int = 0
@@ -1055,6 +1055,10 @@ func decompLZSS(buffer: PackedByteArray, zsize: int, size: int, dic_off: int = 0
 	
 	dict.resize(0x1000)
 	dec.resize(size)
+	if fill_value != 0:
+		for i in range(dict.size()):
+			dict.encode_u8(i, fill_value)
+			
 	while out_off < size:
 		if mask == 0:
 			cb = buffer[in_off]
