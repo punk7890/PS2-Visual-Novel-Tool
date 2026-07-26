@@ -144,7 +144,7 @@ func extractBin() -> void:
 						if buff.slice(tak_data_start, tak_data_start + 3).get_string_from_ascii() == "LZS":
 							var tak_data: PackedByteArray = (PackedByteArray(buff.slice(tak_data_start, tak_data_start + tak_data_comp_size)))
 							var tak_decomp_size: int = tak_data.decode_u32(4)
-							tak_data = ComFuncs.decompLZSS(tak_data.slice(8), tak_data_comp_size, tak_decomp_size)
+							tak_data = ComFuncs.decompLZSS(tak_data.slice(8), tak_data_comp_size, tak_decomp_size, 0xFEE, 0x20)
 							
 							if tak_data.slice(0, 4).get_string_from_ascii() == "TIM2":
 								f_name = "TAK%05d_%02d.TM2" % [id, num]
