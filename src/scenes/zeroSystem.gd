@@ -149,7 +149,7 @@ func extractBin() -> void:
 							if tak_data.slice(0, 4).get_string_from_ascii() == "TIM2":
 								f_name = "TAK%05d_%02d.TM2" % [id, num]
 								var pngs: Array[Image]
-								if Main.game_type == Main.SCHOOLNI:
+								if Main.game_type == Main.SCHOOLRUMBLENI:
 									pngs = load_tim2_images_mod(tak_data, false)
 								else:
 									pngs = ComFuncs.load_tim2_images(tak_data, false, true)
@@ -183,7 +183,7 @@ func extractBin() -> void:
 				elif type == 0x01:
 					f_name = "VIS%05d.TM2" % id
 					var pngs: Array[Image]
-					if Main.game_type == Main.SCHOOLNI:
+					if Main.game_type == Main.SCHOOLRUMBLENI:
 						pngs = load_tim2_images_mod(buff, false)
 					else:
 						pngs = ComFuncs.load_tim2_images(buff, false, true)
@@ -205,7 +205,7 @@ func extractBin() -> void:
 							buff = arr[2]
 							
 							var pngs: Array[Image]
-							if Main.game_type == Main.SCHOOLNI:
+							if Main.game_type == Main.SCHOOLRUMBLENI:
 								pngs = load_tim2_images_mod(buff, false)
 							else:
 								pngs = ComFuncs.load_tim2_images(buff, false, true)
